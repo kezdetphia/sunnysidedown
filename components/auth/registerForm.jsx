@@ -1,8 +1,10 @@
+"use client";
+
 import Link from "next/link";
 
 export default function RegisterForm() {
   return (
-    <div className="py-10 px-10 bg-gray-100 rounded-lg border shadow-lg flex flex-col justify-center items-center space-y-5">
+    <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5">
       <h3 className="text-gray-500 font-semibold">Welcome</h3>
 
       <form className="flex flex-col space-y-3 ">
