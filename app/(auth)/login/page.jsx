@@ -1,26 +1,19 @@
-import { handleLogout } from "@/lib/action";
+import LoginForm from "@/components/auth/loginForm";
+import { handleGoogleLogin, handleLogout } from "@/lib/action";
 import { auth } from "@/lib/auth";
+import Image from "next/image";
 
-export default async function LoginPage() {
-  const session = await auth();
-  console.log({ sessionInLoginPage: session });
-
+export default function LoginPage() {
   return (
-    <div className="flex flex-col items-center  ">
-      <h1>loginpage</h1>
-
-      {session ? (
-        <div>
-          <div className="flex">
-            <h1>you are logged in :</h1>
-            <h2>{session.user.name}</h2>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <h1>you are not logged in</h1>
-        </div>
-      )}
+    <div className=" flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md bg-white shadow-md rounded p-6">
+        <form action={handleGoogleLogin}>
+          <button className="w-full p-3 bg-white text-black font-semibold rounded-md shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            Login With Google
+          </button>
+          <LoginForm />
+        </form>
+      </div>
     </div>
   );
 }
