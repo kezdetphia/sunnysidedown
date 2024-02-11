@@ -15,7 +15,8 @@ export default async function Home() {
         width={100}
         height={100}
       />
-      <h1>{session?.user.isAdmin}</h1>
+      <h1>{session?.user.isAdmin ? "admin" : "no"}</h1>
+      <h1>{session?.user.id}</h1>
     </div>
   );
 }
