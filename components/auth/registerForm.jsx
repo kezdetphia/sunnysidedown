@@ -2,13 +2,17 @@
 
 import Link from "next/link";
 import GoogleLoginButton from "./googleLoginButton";
+import { addUserWithCredentials } from "@/lib/action";
 
 export default function RegisterForm() {
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
       <h3 className="text-gray-500 font-semibold">Register 🙌</h3>
 
-      <form className="flex flex-col space-y-4 w-full ">
+      <form
+        action={addUserWithCredentials}
+        className="flex flex-col space-y-4 w-full "
+      >
         <input
           className="px-1 py-2 rounded-lg border  border-gray-200 shadow-md placeholder-gray-300 text-sm text-gray-700  "
           type="text"
