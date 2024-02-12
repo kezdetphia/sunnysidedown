@@ -5,6 +5,7 @@ import NavLink from "./navLink/navLink";
 import Image from "next/image";
 import { handleLogout } from "@/lib/action";
 import { TfiMenu } from "react-icons/tfi";
+import { usePathname } from "next/navigation";
 
 const links = [
   {
@@ -28,6 +29,11 @@ const links = [
 const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
 
+  const pathName = usePathname();
+  useEffect(() => {
+    setOpen(false);
+  }, [pathName]);
+
   const menuRef = useRef(null);
   //closes mobile menu when clicked outside
   const handleClickOutside = (e) => {
@@ -42,6 +48,8 @@ const Links = ({ session }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   });
+
+  //TODO: if window menu open and window is resized, close menu
 
   return (
     <div className={styles.container}>
