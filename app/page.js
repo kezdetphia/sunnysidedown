@@ -10,7 +10,7 @@ export default async function Home() {
       <h1>{session?.user.email}</h1>
       <Image
         className="rounded-full"
-        src={session.user.image ? session.user.image : "/noavatar.png"}
+        src={session?.user.image ? session.user.image : "/noavatar.png"}
         alt="user image"
         width={100}
         height={100}
