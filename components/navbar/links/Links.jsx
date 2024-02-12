@@ -53,7 +53,7 @@ const Links = ({ session }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.links}>
+      <div className={`${styles.links}`}>
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
@@ -70,14 +70,7 @@ const Links = ({ session }) => {
           <NavLink item={{ title: "Login", path: "/login" }} />
         )}
       </div>
-      {/* <Image
-        className={styles.menuButton}
-        src="/menu.png"
-        alt=""
-        width={30}
-        height={30}
-        onClick={() => setOpen((prev) => !prev)}
-      /> */}
+
       <TfiMenu
         className={styles.menuButton}
         alt=""
@@ -86,7 +79,10 @@ const Links = ({ session }) => {
         onClick={() => setOpen((prev) => !prev)}
       />
       {open && (
-        <div ref={menuRef} className={styles.mobileLinks}>
+        <div
+          ref={menuRef}
+          className={`${styles.mobileLinks}   `}
+        >
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}

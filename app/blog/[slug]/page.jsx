@@ -11,13 +11,20 @@ export default async function SingleBlogPage({ params }) {
 
   const user = await getUser(post.userId);
 
+  //TODO: have the title in the middle while the rest is on the left
+
   return (
-    <div className="flex flex-col  md:flex-row  pt-10 space-x-5  ">
+    <div className="px-10 flex flex-col  md:flex-row  pt-10 space-x-5  ">
       <div className=" md:w-1/2  ">
-        <Image alt="post image " src={post.img} width={800} height={600} />
+        <Image
+          alt="post image "
+          src={post.img ? post.img : "/noimage.jpg"}
+          width={800}
+          height={600}
+        />
       </div>
 
-      <div className="w-full md:w-1/2 flex flex-col pt-5 md:pt-10">
+      <div className="w-full px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">
         <div className="text-center md:text-left ">
           <h1 className="text-3xl font-bold mb-4 flex  ">{post.title}</h1>
         </div>
