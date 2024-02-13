@@ -1,4 +1,4 @@
-import Postcard from "../../components/Postcard";
+import Postcard from "../../components/postCard";
 import { getPosts } from "@/lib/data/postData";
 
 export default async function Blog() {
