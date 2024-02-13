@@ -39,7 +39,7 @@ export default function LoginForm() {
         href="/register"
         className="text-gray-800 flex justify-center hover:text-gray-600 "
       >
-        Don't have an account? <b className="px-2">Register</b>
+        Don&apost have an account? <b className="px-2">Register</b>
       </Link>
     </div>
   );

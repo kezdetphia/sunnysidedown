@@ -22,13 +22,15 @@ export default function Addpost({ userId }) {
       }
     };
 
-    if (descRef.current) {
-      descRef.current.addEventListener("keypress", handleKeyPress);
+    const descRerefence = descRef.current;
+
+    if (descRerefence) {
+      descRerefence.addEventListener("keypress", handleKeyPress);
     }
 
     return () => {
-      if (descRef.current) {
-        descRef.current.removeEventListener("keypress", handleKeyPress);
+      if (descRerefence) {
+        descRerefence.removeEventListener("keypress", handleKeyPress);
       }
     };
   }, []);
