@@ -1,10 +1,8 @@
-import Postcard from "@/components/postCard/Postcard";
+import Postcard from "../../components/Postcard";
 import { getPosts } from "@/lib/data/postData";
 
 export default async function Blog() {
   const posts = await getPosts();
-
-
 
   return (
     <div className="px-10 py-4 flex flex-col md:flex-row items-center flex-wrap gap-4 justify-center pt-10">
