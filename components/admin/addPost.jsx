@@ -1,9 +1,38 @@
+"use client";
 import { addPost } from "@/lib/data/postData";
+import { useEffect, useRef } from "react";
 
 //TODO: need to add linebreaks when hitting enter
 // in description section to display it in the blogpage the same way
 
 export default function Addpost({ userId }) {
+  const descRef = useRef();
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        const textarea = descRef.current;
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const value = textarea.value;
+        textarea.value =
+          value.substring(0, start) + "\n" + value.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start + 1;
+        event.preventDefault();
+      }
+    };
+
+    if (descRef.current) {
+      descRef.current.addEventListener("keypress", handleKeyPress);
+    }
+
+    return () => {
+      if (descRef.current) {
+        descRef.current.removeEventListener("keypress", handleKeyPress);
+      }
+    };
+  }, []);
+
   return (
     <div className="md:pt-20 pt-10 flex items-center">
       <form
@@ -14,12 +43,14 @@ export default function Addpost({ userId }) {
 
         <div className="mb-4">
           <label
+            ref={descRef}
             name="desc"
             className="block text-sm font-medium text-gray-600"
           >
             Description
           </label>
           <textarea
+            ref={descRef}
             name="desc"
             placeholder="One day baby..."
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 resize-none whitespace-pre-wrap"

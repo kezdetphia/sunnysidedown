@@ -9,7 +9,7 @@ const Navbar = async () => {
   console.log({ NavbarSession: session });
 
   return (
-    <div className={`${styles.container} bg-black`}>
+    <div className={`${styles.container} bg-black px-7 lg:px-40 `}>
       <Link href="/" className={styles.logo}>
         <AiFillAlipayCircle size={42} />
       </Link>

@@ -24,7 +24,7 @@ export default async function Postcard({ post }) {
             </h2>
             <p className="">{post.desc.substring(0, 30)}...</p>
             <p className="text-gray-400 ">
-              {post.createdAt?.toString().slice(4, 20)}
+              {post.createdAt?.toString().slice(4, 16)}
             </p>
             <button className=" text-gray-300">Read More</button>
           </div>
