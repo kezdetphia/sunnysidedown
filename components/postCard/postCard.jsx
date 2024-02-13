@@ -7,13 +7,14 @@ export default async function Postcard({ post }) {
       <div className=" ">
         <Link className="cursos-pointer" href={`/blog/${post.slug}`}>
           <div>
-            <div className="rounded-xl">
+            <div className="rounded-xl relative w-80 h-96 gap-x-3 ">
               <Image
                 src={post.img ? post.img : "/noimage.jpg"}
                 alt="post-image"
-                width={500}
-                height={700}
-                objectFit="cover"
+                object-fit="cover"
+                // width={500}
+                // height={700}
+                fill={true}
               />
             </div>
           </div>
