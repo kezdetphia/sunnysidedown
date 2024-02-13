@@ -10,10 +10,12 @@ export default function GoogleLoginButton() {
       <div className="flex flex-row cursor-pointer rounded-2xl ">
         <form
           action={handleGoogleLogin}
-          className="px-28  cursor-pointer flex items-center justify-center bg-gray-900 rounded-xl  hover:bg-black "
+          className="px-28  cursor-pointer flex items-center justify-center bg-gray-900 rounded-xl  hover:bg-gray-800 "
         >
           <FcGoogle className="text-2xl" />
-          <button className=" px-3  py-2 text-gray-200">Google</button>
+          <button className=" px-3  py-2 text-gray-200 text-semibold">
+            Google
+          </button>
         </form>
       </div>
     </div>

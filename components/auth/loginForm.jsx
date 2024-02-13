@@ -8,7 +8,7 @@ import { loginWithCredentials } from "@/lib/action";
 export default function LoginForm() {
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
-      <h3 className="text-gray-500 font-semibold">Login 🙌</h3>
+      <h3 className="text-gray-800 font-semibold ">Login 🙌</h3>
 
       <form
         action={loginWithCredentials}
@@ -28,14 +28,17 @@ export default function LoginForm() {
           placeholder="*********"
         />
 
-        <button className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-black cursos-pointer">
+        <button className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold">
           Login{" "}
         </button>
       </form>
 
       <GoogleLoginButton />
 
-      <Link href="/register" className="text-gray-500 flex justify-center ">
+      <Link
+        href="/register"
+        className="text-gray-800 flex justify-center hover:text-gray-600 "
+      >
         Don't have an account? <b className="px-2">Register</b>
       </Link>
     </div>

@@ -10,7 +10,7 @@ const NavLink = ({ item }) => {
   return (
     <Link
       href={item.path}
-      className={`${styles.container} hover:bg-opacity-50 hover:bg-slate-50 ${
+      className={`${styles.container} hover:bg-opacity-60 hover:bg-gray-900 ${
         pathName === item.path && styles.active
       }`}
     >

@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const postSchema = new mongoose.Schema(
   {
     title: {
@@ -31,9 +30,12 @@ const postSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
-
 
 export const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
