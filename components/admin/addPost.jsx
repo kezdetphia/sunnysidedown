@@ -1,5 +1,6 @@
 "use client";
 import { addPost } from "@/lib/data/postData";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 //TODO: need to add linebreaks when hitting enter
@@ -7,6 +8,8 @@ import { useEffect, useRef } from "react";
 
 export default function Addpost({ userId }) {
   const descRef = useRef();
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -103,6 +106,9 @@ export default function Addpost({ userId }) {
 
         <input readOnly hidden type="text" name="userId" value={userId} />
         <button
+          onClick={() => {
+            router.push("/blog");
+          }}
           type="submit"
           className="w-full py-2 px-4 bg-gray-900 hover:bg-gray-800 focus:ring-gray-500 focus:ring-offset-gray-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
         >
