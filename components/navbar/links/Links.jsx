@@ -84,7 +84,9 @@ const Links = ({ session }) => {
 
       <div className={`${open ? "hidden" : "block"} `}>
         <TfiMenu
-          className={`${styles.menuButton} ${open ? "hidden" : "block"} `}
+          className={`${styles.menuButton} ${
+            open ? "hidden" : "block"
+          } text-gray-200 `}
           alt=""
           width={3}
           height={70}
@@ -95,7 +97,7 @@ const Links = ({ session }) => {
         // <div ref={menuRef} className={`${styles.mobileLinks}    `}>
         <div
           ref={menuRef}
-          className="bg-pink-200 shadow-lg rounded-xl absolute top-24 right-0 w-1/2 h-full z-10 flex flex-col items-center justify-center gap-10 "
+          className="bg-gray-900 m-1 shadow-lg rounded-xl absolute top-24 right-0 w-1/2 h-full z-10 flex flex-col items-center justify-center gap-10 "
         >
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
