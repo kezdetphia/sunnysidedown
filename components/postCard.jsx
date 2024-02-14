@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
+//TODO: when open mobile menubotton the menu doesnt show i believe the posts cover the menubutton
 export default async function Postcard({ post }) {
   return (
     <div className=" ">
