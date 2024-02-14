@@ -82,18 +82,20 @@ const Links = ({ session }) => {
         )}
       </div>
 
-      <TfiMenu
-        className={styles.menuButton}
-        alt=""
-        width={3}
-        height={70}
-        onClick={() => setOpen((prev) => !prev)}
-      />
+      <div className={`${open ? "hidden" : "block"} `}>
+        <TfiMenu
+          className={`${styles.menuButton} ${open ? "hidden" : "block"} `}
+          alt=""
+          width={3}
+          height={70}
+          onClick={() => setOpen((prev) => !prev)}
+        />
+      </div>
       {open && (
         // <div ref={menuRef} className={`${styles.mobileLinks}    `}>
         <div
           ref={menuRef}
-          className="bg-aquamarine absolute top-100 right-0 w-1/2 h-[calc(100vh-100px)] z-10 flex flex-col items-center justify-center gap-10"
+          className="bg-pink-200 shadow-lg rounded-xl absolute top-100 right-0 w-1/2 h-[calc(100vh-100px)] z-10 flex flex-col items-center justify-center gap-10"
         >
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
