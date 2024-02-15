@@ -7,8 +7,7 @@ import { getPosts } from "@/lib/data/postData";
 import { getUsers } from "@/lib/data/userData";
 export default async function AdminPage() {
   const session = await auth();
-  const userId = session.user.id;
-  // const posts = await getPosts();
+  const userId = session?.user.id;
 
   const users = await getUsers();
   console.log(users);
