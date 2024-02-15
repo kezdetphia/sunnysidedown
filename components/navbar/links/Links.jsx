@@ -62,8 +62,7 @@ const Links = ({ session }) => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      {/* <div className="bg-red-300"> */}
+    <div className={`${styles.container} text-gray-200`}>
       <div className={`${styles.links}`}>
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
@@ -74,7 +73,9 @@ const Links = ({ session }) => {
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <button className="p-[10px] cursor-pointer font-bold hover:text-gray-400">
+                Logout
+              </button>
             </form>
           </>
         ) : (
@@ -82,11 +83,9 @@ const Links = ({ session }) => {
         )}
       </div>
 
-      <div className={`${open ? "hidden" : "block"} `}>
+      <div>
         <TfiMenu
-          className={`${styles.menuButton} ${
-            open ? "hidden" : "block"
-          } text-gray-200 `}
+          className={`${styles.menuButton} ${open ? "hidden" : "block"}`}
           alt=""
           width={3}
           height={70}
@@ -94,7 +93,6 @@ const Links = ({ session }) => {
         />
       </div>
       {open && (
-        // <div ref={menuRef} className={`${styles.mobileLinks}    `}>
         <div
           ref={menuRef}
           className="bg-gray-900 m-1 shadow-lg rounded-xl absolute top-24 right-0 w-1/2 h-full z-10 flex flex-col items-center justify-center gap-10 "
@@ -102,6 +100,20 @@ const Links = ({ session }) => {
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
+          {session?.user ? (
+            <>
+              {session.user?.isAdmin && (
+                <NavLink item={{ title: "Admin", path: "/admin" }} />
+              )}
+              <form action={handleLogout}>
+                <button className="p-[10px] cursor-pointer font-bold  hover:text-gray-400">
+                  Logout
+                </button>
+              </form>
+            </>
+          ) : (
+            <NavLink item={{ title: "Login", path: "/login" }} />
+          )}
         </div>
       )}
     </div>
