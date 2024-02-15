@@ -113,20 +113,29 @@ export default function Addpost({ userId }) {
           />
         </div>
 
-        <input readOnly hidden type="text" name="userId" value={userId} />
+        <div className="mb-4">
+          <label
+            name="isDark"
+            className="block text-sm font-medium text-gray-600"
+          >
+            Vibe of story
+          </label>
+          <select
+            name="isDark"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+          >
+            <option value="true">Dark</option>
+            <option value="false">Bright</option>
+          </select>
+        </div>
 
+        <input readOnly hidden type="text" name="userId" value={userId} />
         <button
-          // onClick={() => {
-          //   if (state && state.error) {
-          //     console.log("THERES ERRROROROROR", state.error);
-          //   }
-          // }}
           type="submit"
           className="w-full py-2 px-4 bg-gray-900 hover:bg-gray-800 focus:ring-gray-500 focus:ring-offset-gray-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
         >
           Submit
         </button>
-
         <div className="flex  justify-center">
           {state && state.error === "wrong link" && (
             <p className="text-red-600">
