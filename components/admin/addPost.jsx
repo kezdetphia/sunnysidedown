@@ -1,15 +1,18 @@
 "use client";
 import { addPost } from "@/lib/data/postData";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { useFormState } from "react-dom";
 
 //TODO: need to add linebreaks when hitting enter
 // in description section to display it in the blogpage the same way
 
 export default function Addpost({ userId }) {
   const descRef = useRef();
-
   const router = useRouter();
+
+  const [state, formAction] = useFormState(addPost, undefined);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -38,10 +41,16 @@ export default function Addpost({ userId }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (state && !state.error) {
+      router.push("/blog");
+    }
+  }, [state]);
+
   return (
     <div className="md:pt-20 pt-10 flex items-center">
       <form
-        action={addPost}
+        action={formAction}
         className="w-4/5 max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-xl text-gray-900"
       >
         <h1 className="text-3xl font-bold mb-4 text-gray-800">Add Post</h1>
@@ -105,15 +114,34 @@ export default function Addpost({ userId }) {
         </div>
 
         <input readOnly hidden type="text" name="userId" value={userId} />
+
         <button
-          onClick={() => {
-            router.push("/blog");
-          }}
+          // onClick={() => {
+          //   if (state && state.error) {
+          //     console.log("THERES ERRROROROROR", state.error);
+          //   }
+          // }}
           type="submit"
           className="w-full py-2 px-4 bg-gray-900 hover:bg-gray-800 focus:ring-gray-500 focus:ring-offset-gray-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
         >
           Submit
         </button>
+
+        <div className="flex  justify-center">
+          {state && state.error === "wrong link" && (
+            <p className="text-red-600">
+              Wrong link, use{" "}
+              <Link
+                href="https://www.pexels.com/"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                pexels.com,Then right click on image then copy image address.
+              </Link>
+            </p>
+          )}
+        </div>
       </form>
     </div>
   );

@@ -1,10 +1,14 @@
 import { addPost } from "@/lib/data/postData";
+import {useFormState} from "react-dom";
 
 export default function adminAddPostForm({ userId }) {
+
+  const [state, formAction] = useFormState(addPost, undefined)
+
   return (
     <div className="md:pt-20 pt-10 flex items-center">
       <form
-        action={addPost}
+        action={formAction}
         className="w-4/5 max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-xl text-gray-900"
       >
         <h1 className="text-3xl font-bold mb-4 text-gray-800">Add Post</h1>
@@ -72,6 +76,7 @@ export default function adminAddPostForm({ userId }) {
         >
           Submit
         </button>
+        {state?.error}
       </form>
     </div>
   );
