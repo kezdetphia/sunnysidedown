@@ -3,7 +3,6 @@ import Image from "next/image";
 
 export default async function Home() {
   const session = await auth();
-  console.log({ HomePAgeUser: session?.user });
   return (
     <div>
       <h1>HOME</h1>

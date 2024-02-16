@@ -5,11 +5,11 @@ export default async function AdminUserHandling() {
   const users = await getUsers();
 
   return (
-    <div>
+    <div className=" md:pt-28 pt-10  items-center ">
+      <h1 className="text-2xl font-bold pb-8 ">Users</h1>
       {users.map((user) => (
-        <div key={user._id} className=" md:pt-20 pt-10  items-center ">
-          <div className="p-8 ">
-            <h1 className="text-2xl font-bold pb-3">Users</h1>
+        <div key={user._id}>
+          <div className=" ">
             <div className="flex gap-x-2">
               <h1 className="text-gray-800">{user.username}</h1>
               <form action={deleteUser}>

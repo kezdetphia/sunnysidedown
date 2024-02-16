@@ -7,7 +7,7 @@ export default async function AdminPage() {
   const userId = session?.user.id;
 
   return (
-    <div className="flex  ">
+    <div className="lg:flex   ">
       <div className="max-w-4xl w-full   ">
         <AdminAddPostForm userId={userId} />
       </div>

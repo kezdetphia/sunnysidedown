@@ -1,17 +1,22 @@
+import PostUser from "@/components/postUser";
 import { getPost } from "@/lib/data/postData";
 import { getUser } from "@/lib/data/userData";
 import Image from "next/image";
 import React, { Suspense } from "react";
 
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPost(slug);
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
+
 export default async function SingleBlogPage({ params }) {
   const { slug } = params;
 
   const post = await getPost(slug);
-  console.log(post);
-
-  const user = await getUser(post?.userId);
-
-  //TODO: have the title in the middle while the rest is on the left
 
   return (
     <div className="px-10 flex flex-col  md:flex-row  pt-10 space-x-5  ">
@@ -29,12 +34,12 @@ export default async function SingleBlogPage({ params }) {
           <h1 className="text-3xl font-bold mb-4 flex  ">{post?.title}</h1>
         </div>
 
-        <div className="flex  flex-col gap-1 pb-3">
+        <div className="flex flex-col gap-1 pb-3">
           <div className="flex gap-x-2 ">
-            <p className="text-gray-500">Author:</p>
+            <p className="text-gray-500 pr-4">Author:</p>
             {post && (
               <Suspense fallback={<div>Loading...</div>}>
-                <p>{user?.username}</p>
+                <PostUser userId={post.userId} />
               </Suspense>
             )}
           </div>
@@ -44,6 +49,7 @@ export default async function SingleBlogPage({ params }) {
             <p>{post?.createdAt.toString().slice(4, 16)}</p>
           </div>
         </div>
+
         <p className="text-gray-600 mb-2 text-left ">{post?.desc}</p>
       </div>
     </div>
