@@ -9,7 +9,7 @@ export default function DeleteButton({ props }) {
   return (
     <div>
       <button onClick={() => onClickHandler}>
-        <MdDelete className="h-5 w-5 text-red-500" />
+        <MdDelete className="h-5 w-5 text-red-900" />
       </button>
     </div>
   );

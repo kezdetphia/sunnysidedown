@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.pinterest.co.uk",
       },
+      {
+        protocol: "https",
+        hostname: "media.giphy.com",
+      },
     ],
   },
 };
