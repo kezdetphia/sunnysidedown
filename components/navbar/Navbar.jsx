@@ -5,7 +5,6 @@ import { AiFillAlipayCircle } from "react-icons/ai";
 
 const Navbar = async () => {
   const session = await auth();
-  console.log({ NavbarSession: session });
 
   return (
     <div className="bg-gray-900 px-7 lg:px-40 flex items-center justify-between h-24">
