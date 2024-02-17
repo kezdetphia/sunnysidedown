@@ -4,9 +4,17 @@ import Link from "next/link";
 import GoogleLoginButton from "./googleLoginButton";
 import { addUserWithCredentials } from "@/lib/action";
 import { useFormState } from "react-dom";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [state, formAction] = useFormState(addUserWithCredentials, undefined);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    state?.success && router.push("/login");
+  }, [state?.success, router]);
 
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
@@ -45,7 +53,7 @@ export default function RegisterForm() {
       </form>
 
       <GoogleLoginButton />
-      
+
       <div className="flex justify-center">
         {state && state.error && <p className="text-red-600">{state.error}</p>}
       </div>
