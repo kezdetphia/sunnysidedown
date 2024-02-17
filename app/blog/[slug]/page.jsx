@@ -20,13 +20,17 @@ export default async function SingleBlogPage({ params }) {
 
   return (
     <div className="px-10 flex flex-col  md:flex-row  pt-10 space-x-5  ">
-      <div className=" md:w-1/2  ">
-        <Image
-          alt="post image "
-          src={post?.img ? post.img : "/noimage.jpg"}
-          width={800}
-          height={600}
-        />
+      <div className=" md:w-1/2   ">
+        <div className="rounded-xl relative md:w-4/5  w-full h-[500px] lg:h-[800px] gap-x-3 pb-10 ">
+          <Image
+            alt="post image "
+            src={post?.img ? post.img : "/noimage.jpg"}
+            object-fit="cover"
+            // width={500}
+            // height={700}
+            fill={true}
+          />
+        </div>
       </div>
 
       <div className="w-full px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">

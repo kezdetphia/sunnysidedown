@@ -13,17 +13,20 @@ export const metadata = {
     "Welcome to BeePolaroid, where you can find a collection of dark and bright poems and thoughts.",
 };
 
+import { SessionProvider } from "next-auth/react";
+
 export default function RootLayout({ children }) {
-  
   return (
     <html lang="en">
-      <body className={`${lora.className} bg-gray-300 `}>
+      <body className={`${lora.className} bg-white `}>
         <div>
-          <Navbar />
-          <div className="flex flex-1 flex-col justify-between h-screen ">
-            {children}
+          <SessionProvider>
+            <Navbar />
+            <div className="flex flex-1 flex-col justify-between h-screen bg-gray-200 ">
+              {children}
+            </div>
             <Footer />
-          </div>
+          </SessionProvider>
         </div>
       </body>
     </html>

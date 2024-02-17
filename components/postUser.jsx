@@ -4,8 +4,6 @@ import Image from "next/image";
 
 export default async function PostUser({ userId }) {
   const user = await getUser(userId);
-  const session = await auth();
-  console.log("this isn post user:", session);
 
   return (
     <div className="flex gap-x-1 justify-center items-center">

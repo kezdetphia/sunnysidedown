@@ -1,11 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import styles from "./links.module.css";
-import NavLink from "./navLink/navLink";
-import Image from "next/image";
-import { handleLogout } from "@/lib/action";
-import { TfiMenu } from "react-icons/tfi";
 import { usePathname } from "next/navigation";
+import { handleLogout } from "@/lib/action";
+import NavLink from "./navLink/navLink";
+import styles from "./links.module.css";
+import { TfiMenu } from "react-icons/tfi";
 
 const links = [
   {
