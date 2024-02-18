@@ -1,13 +1,18 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import GoogleLoginButton from "./googleLoginButton";
 import { useFormState } from "react-dom";
 import { loginWithCredentials } from "@/lib/action";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-
   const [state, formAction] = useFormState(loginWithCredentials, undefined);
+
+  // const router = useRouter();
+  // useEffect(() => {
+  //   state?.success && router.push("/");
+  // }, [state?.success, router]);
 
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">

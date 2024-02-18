@@ -7,7 +7,7 @@ export default async function AdminPage() {
   const userId = session?.user.id;
 
   return (
-    <div className="lg:flex bg-gray-800   ">
+    <div className="lg:flex bg-gray-800 pb-20   ">
       <div className=" w-full   ">
         <AdminAddPostForm userId={userId} />
       </div>

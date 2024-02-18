@@ -1,4 +1,3 @@
-// import { Inter } from "next/font/google";
 import { Lora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
@@ -13,20 +12,16 @@ export const metadata = {
     "Welcome to BeePolaroid, where you can find a collection of dark and bright poems and thoughts.",
 };
 
-import { SessionProvider } from "next-auth/react";
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${lora.className} bg-white `}>
         <div>
-          <SessionProvider>
-            <Navbar />
-            <div className="flex flex-1 flex-col justify-between h-screen bg-gray-200 ">
-              {children}
-            </div>
+          <Navbar />
+          <div className="flex flex-1 flex-col justify-between h-full  ">
+            <main>{children}</main>
             <Footer />
-          </SessionProvider>
+          </div>
         </div>
       </body>
     </html>

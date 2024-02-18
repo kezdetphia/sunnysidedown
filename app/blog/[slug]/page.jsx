@@ -19,9 +19,9 @@ export default async function SingleBlogPage({ params }) {
   const post = await getPost(slug);
 
   return (
-    <div className="px-10 flex flex-col  md:flex-row  pt-10 space-x-5  ">
-      <div className=" md:w-1/2   ">
-        <div className="rounded-xl relative md:w-4/5  w-full h-[500px] lg:h-[800px] gap-x-3 pb-10 ">
+    <div className="px-10 flex flex-col md:flex-row pt-20  space-x-5 h-screen   ">
+      <div className=" md:w-1/2 flex justify-center    ">
+        <div className="rounded-xl relative md:w-4/5 w-full h-[500px]  lg:h-[800px] gap-x-3 pb-10  ">
           <Image
             alt="post image "
             src={post?.img ? post.img : "/noimage.jpg"}
@@ -33,7 +33,7 @@ export default async function SingleBlogPage({ params }) {
         </div>
       </div>
 
-      <div className="w-full px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">
+      <div className="w-full  px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">
         <div className="text-center md:text-left ">
           <h1 className="text-3xl font-bold mb-4 flex  ">{post?.title}</h1>
         </div>

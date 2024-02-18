@@ -2,6 +2,7 @@
 import { MdDelete } from "react-icons/md";
 
 export default function DeleteButton({ props }) {
+  
   const onClickHandler = () => {
     alert(`Deleting Item: ${props}`);
     console.log("delete button clicked");

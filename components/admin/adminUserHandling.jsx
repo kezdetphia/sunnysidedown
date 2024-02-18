@@ -15,12 +15,12 @@ export default async function AdminUserHandling() {
           {users.map((user) => (
             <div
               className="flex justify-between items-center border border-1 border-gray-300 rounded-md shadow-md shadow-gray-400 py-2 px-3 "
-              key={user._id}
+              key={user.id}
             >
               <span className="text-gray-400">{user.username}</span>
               <form action={deleteUser}>
-                <input type="hidden" name="id" value={user._id} />
-                <DeleteButton props={user._id} />
+                <input type="hidden" name="id" value={user.id} />
+                <DeleteButton props={user.id} />
               </form>
             </div>
           ))}

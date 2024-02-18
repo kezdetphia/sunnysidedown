@@ -12,17 +12,17 @@ export default async function AdminPostHandling() {
           Posts
         </h1>
         <div className="xl:h-[890px] h-[490px] overflow-y-auto space-y-4">
-          {posts.map(({ id, title, slug }) => (
+          {posts.map((post) => (
             <div
               className="flex justify-between items-center border border-1 border-gray-300 rounded-md shadow-md shadow-gray-400 py-2 px-3 "
-              key={id}
+              key={post.id}
             >
-              <Link href={`/blog/${slug}`}>
-                <span className="text-gray-400">{title}</span>
+              <Link href={`/blog/${post.slug}`}>
+                <span className="text-gray-400">{post.title}</span>
               </Link>
               <form action={deletePost}>
-                <input type="hidden" name="id" value={id} />
-                <DeleteButton props={title} />
+                <input readOnly type="hidden" name="id" value={post.id} />
+                <DeleteButton props={post.title} />
               </form>
             </div>
           ))}

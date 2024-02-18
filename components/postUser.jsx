@@ -1,4 +1,3 @@
-import { auth } from "@/lib/auth";
 import { getUser } from "@/lib/data/userData";
 import Image from "next/image";
 
