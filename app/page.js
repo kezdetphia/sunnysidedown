@@ -3,6 +3,8 @@ import Image from "next/image";
 
 export default async function Home() {
   const session = await auth();
+  console.log("homepage load");
+
   return (
     <div className="flex flex-col justify-center items-center h-screen  bg-pink-300">
       <h1 className="text-6xl">HomePage</h1>

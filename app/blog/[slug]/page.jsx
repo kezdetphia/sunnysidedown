@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/data/postData";
 
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 import React, { Suspense } from "react";
 
@@ -18,6 +19,12 @@ export const generateMetadata = async ({ params }) => {
 export default async function SingleBlogPage({ params }) {
   const { slug } = params;
   const post = await getPost(slug);
+
+  const session = await auth();
+
+  if (!session) {
+    redirect("/login");
+  }
 
   return (
     <div className="px-10 flex flex-col md:flex-row pt-20  space-x-5 h-screen   ">
