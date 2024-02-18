@@ -1,7 +1,9 @@
 import PostUser from "@/components/postUser";
+import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/data/postData";
-import { getUser } from "@/lib/data/userData";
+
 import Image from "next/image";
+
 import React, { Suspense } from "react";
 
 export const generateMetadata = async ({ params }) => {
@@ -15,7 +17,6 @@ export const generateMetadata = async ({ params }) => {
 
 export default async function SingleBlogPage({ params }) {
   const { slug } = params;
-
   const post = await getPost(slug);
 
   return (

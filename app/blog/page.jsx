@@ -3,6 +3,7 @@ import { getPosts } from "@/lib/data/postData";
 
 export default async function Blog() {
   const posts = await getPosts();
+  
 
   return (
     <div className=" px-10 py-20 flex flex-col md:flex-row items-center flex-wrap gap-4  justify-center ">
