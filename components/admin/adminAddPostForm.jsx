@@ -45,7 +45,7 @@ export default function AdminAddPostForm({ userId }) {
     if (state && !state.error) {
       router.push("/blog");
     }
-  }, [state]);
+  }, [state, router]);
 
   return (
     <div className="md:pt-20 py-10 flex items-center ">
