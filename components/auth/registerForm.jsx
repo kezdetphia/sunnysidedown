@@ -13,8 +13,10 @@ export default function RegisterForm() {
   const router = useRouter();
 
   useEffect(() => {
-    state?.success && router.push("/login");
-  }, [state?.success, router]);
+    if (state && !state.error) {
+      router.push("/login");
+    }
+  }, [state, router]);
 
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">

@@ -19,9 +19,7 @@ export const generateMetadata = async ({ params }) => {
 export default async function SingleBlogPage({ params }) {
   const { slug } = params;
   const post = await getPost(slug);
-
   const session = await auth();
-
   if (!session) {
     redirect("/login");
   }

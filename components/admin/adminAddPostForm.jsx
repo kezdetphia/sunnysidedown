@@ -1,18 +1,36 @@
 "use client";
 import { addPost } from "@/lib/data/postData";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 
 //TODO: need to add linebreaks when hitting enter
 // in description section to display it in the blogpage the same way
 
-export default function AdminAddPostForm({ userId }) {
+export default function AdminAddPostForm() {
   const descRef = useRef();
   const router = useRouter();
+  const session = useSession();
 
   const [state, formAction] = useFormState(addPost, undefined);
+  const [userId, setUserId] = useState(""); //set userid after checking if user is authenticated
+
+  useEffect(() => {
+    if (session?.data?.user) {
+      setUserId(session?.data?.user.id);
+    }
+  }, session);
+
+  useEffect(() => {
+    if (!session?.data?.user.isAdmin) {
+      router.push("/");
+    }
+    if (state && !state.error) {
+      router.push("/blog");
+    }
+  }, [state, session, router]);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
