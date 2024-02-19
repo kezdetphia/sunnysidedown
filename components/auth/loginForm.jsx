@@ -58,7 +58,7 @@ export default function LoginForm() {
         />
 
         <button
-          className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold"
+          className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold "
           onClick={() => setIsloading(true)}
         >
           {isLoading ? "Logging in..." : "Login"}

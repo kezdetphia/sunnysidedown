@@ -4,10 +4,10 @@ import Link from "next/link";
 export default async function Postcard({ post }) {
   return (
     <div>
-      <div className=" ">
+      <div className="  transition duration-500 hover:scale-105 ">
         <Link className="cursos-pointer" href={`/blog/${post?.slug}`}>
           <div>
-            <div className=" relative w-80 h-96 gap-x-3 ">
+            <div className=" relative sm:w-80 w-full h-96 gap-x-3 ">
               <Image
                 className="rounded-2xl "
                 src={post?.img ? post.img : "/noimage.jpg"}

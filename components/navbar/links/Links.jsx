@@ -74,7 +74,7 @@ const Links = () => {
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className="p-[10px] cursor-pointer font-bold hover:text-gray-400">
+              <button className="p-[10px] cursor-pointer font-bold hover:text-gray-400   ">
                 Logout
               </button>
             </form>
