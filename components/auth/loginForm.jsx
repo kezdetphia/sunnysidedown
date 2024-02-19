@@ -36,7 +36,6 @@ export default function LoginForm() {
     }
   }, [state, session, router]);
 
-  //TODO: change login button text to Logging in or Loading while
   //make it bigger on screens,
   //make it full screen on mobile
 

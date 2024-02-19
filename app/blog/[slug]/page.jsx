@@ -25,14 +25,15 @@ export default async function SingleBlogPage({ params }) {
   //TODO: when deployed theres no padding between the post and the footer
 
   return (
-    <div className="px-10 flex flex-col md:flex-row pt-20  sm:space-x-5 min-h-screen bg-neutral-950    ">
-      <div className=" md:w-1/2 flex justify-center pb-40    ">
-        <div className="relative md:w-4/5  w-full h-[500px] lg:h-[800px] gap-x-3   ">
+    <div className="px-10  flex flex-col md:flex-row py-20  md:space-x-5 min-h-screen bg-neutral-950    ">
+      <div className=" md:w-1/2 flex justify-center ">
+        <div className="relative  w-full  h-[500px]  md:h-[500px] md:w-[400px] lg:w-[700px] lg:h-[700px] xl:w-[700px] xl:h-[800px] gap-x-3   ">
           <Image
             className="rounded-2xl"
             alt="post image "
             src={post?.img ? post.img : "/noimage.jpg"}
             object-fit="cover"
+            // overflow="hidden"
             // width={500}
             // height={700}
             fill={true}
