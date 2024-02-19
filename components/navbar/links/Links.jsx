@@ -62,10 +62,9 @@ const Links = () => {
     };
   }, []);
 
-
   return (
-    <div className={`${styles.container} text-gray-200`}>
-      <div className={`${styles.links}`}>
+    <div className={`${styles.container} text-neutral-300`}>
+      <div className={`${styles.links} `}>
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
@@ -97,7 +96,7 @@ const Links = () => {
       {open && (
         <div
           ref={menuRef}
-          className="bg-gray-900 m-1 shadow-lg rounded-xl absolute top-24 right-0 w-1/2 h-full z-10 flex flex-col items-center justify-center gap-10 "
+          className="bg-black m-2 shadow-lg rounded-xl absolute top-24 right-0  w-1/2 h-full z-20 flex flex-col items-center justify-center gap-10 "
         >
           {links.map((link) => (
             <NavLink item={link} key={link.title} />

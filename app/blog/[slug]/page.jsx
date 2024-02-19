@@ -22,14 +22,14 @@ export default async function SingleBlogPage({ params }) {
     redirect("/login");
   }
 
-
   //TODO: when deployed theres no padding between the post and the footer
 
   return (
-    <div className="px-10 flex flex-col md:flex-row pt-20  sm:space-x-5 h-screen    ">
-      <div className=" md:w-1/2 flex justify-center    ">
-        <div className="rounded-xl relative md:w-4/5  w-full h-[500px]   lg:h-[800px] gap-x-3 pb-10  ">
+    <div className="px-10 flex flex-col md:flex-row pt-20  sm:space-x-5 min-h-screen bg-neutral-950    ">
+      <div className=" md:w-1/2 flex justify-center pb-40    ">
+        <div className="relative md:w-4/5  w-full h-[500px] lg:h-[800px] gap-x-3   ">
           <Image
+            className="rounded-2xl"
             alt="post image "
             src={post?.img ? post.img : "/noimage.jpg"}
             object-fit="cover"
@@ -42,12 +42,14 @@ export default async function SingleBlogPage({ params }) {
 
       <div className="w-full  px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">
         <div className="text-center md:text-left ">
-          <h1 className="text-3xl font-bold mb-4 flex  ">{post?.title}</h1>
+          <h1 className="text-3xl font-bold mb-4 flex text-neutral-300   ">
+            {post?.title}
+          </h1>
         </div>
 
         <div className="flex flex-col gap-1 pb-3">
           <div className="flex gap-x-2 ">
-            <p className="text-gray-500 pr-4">Author:</p>
+            <p className="text-neutral-600 pr-4">Author:</p>
             {post && (
               <Suspense fallback={<div>Loading...</div>}>
                 <PostUser userId={post.userId} />
@@ -56,12 +58,16 @@ export default async function SingleBlogPage({ params }) {
           </div>
 
           <div className="flex gap-x-2 ">
-            <p className="text-gray-500  ">Published:</p>
-            <p>{post?.createdAt.toString().slice(4, 16)}</p>
+            <p className="text-neutral-600  ">Published:</p>
+            <p className="text-neutral-300">
+              {post?.createdAt.toString().slice(4, 16)}
+            </p>
           </div>
         </div>
 
-        <p className="text-gray-600 mb-2 text-left ">{post?.desc}</p>
+        <p className="text-neutral-200 text-lg mb-2 text-left tracking-wide ">
+          {post?.desc}
+        </p>
       </div>
     </div>
   );

@@ -1,35 +1,31 @@
-import { auth } from "@/lib/auth";
 import Image from "next/image";
+import des from "../public/des.png";
+import desi from "../public/desi.jpg";
 
 export default async function Home() {
-  const session = await auth();
-  console.log("homepage load");
-
   return (
-    <div className="flex flex-col justify-center items-center h-screen  bg-pink-300">
-      <h1 className="text-6xl">HomePage</h1>
-      <span className="text-5xl">
-        I need the text here and you can think of an image
-      </span>
-      <h1>{session?.user.name}</h1>
-      <h1>{session?.user.email}</h1>
+    <div className="relative flex flex-col justify-center  min-h-screen  bg-neutral-950 text-gray-200">
+      <div className="sm:w-1/3 sm:absolute sm:top-36 sm:left-36 flex justify-center items-center   ">
+        <h1 className="sm:text-2xl   z-10 relative bg-gray-900 bg-opacity-5 tracking-wider ">
+          Welcome to my kaleidoscope of words,
+          <br /> where poems dance between light and shadow,
+          <br />
+          painting emotions with every stroke of my pen.
+        </h1>
+      </div>
+
       <Image
-        className="rounded-full"
-        src={session?.user.image ? session.user.image : "/noavatar.png"}
-        alt="user image"
-        width={100}
-        height={100}
-      />
-      <h1>{session?.user.isAdmin ? "admin" : "no"}</h1>
-      <h1>{session?.user.id}</h1>
-      {/* <div className="w-1/2">
-        <Image
+        className="rounded-bl-full absolute top-0 right-0 w-[300px] md:w-[400px] lg:w-[500px]  "
+        src={des}
         width={400}
         height={400}
-        alt=""
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHlmY2MwMGE1MjdsZTVldzZkaTE3ZXFzZWh3bmp6N2NmNjF3MDAxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WNiX60enqL6VBN92wI/giphy.gif"
-        />
-      </div> */}
+      />
+      <Image
+        className="rounded-tr-full absolute bottom-0 left-0 w-[300px] md:w-[400px] lg:w-[500px]  "
+        src={desi}
+        width={400}
+        height={400}
+      />
     </div>
   );
 }

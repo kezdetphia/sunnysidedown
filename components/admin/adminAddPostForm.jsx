@@ -67,15 +67,15 @@ export default function AdminAddPostForm() {
 
   return (
     <div className="md:pt-20 py-10 flex items-center ">
-      <div className=" bg-gray-600 w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-md shadow-black  text-gray-900">
+      <div className=" bg-neutral-900 w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 ">
         <form action={formAction}>
-          <h1 className="text-3xl font-bold mb-4 text-gray-300">Add Post</h1>
+          <h1 className="text-3xl font-bold mb-4 text-neutral-300">Add Post</h1>
 
           <div className="mb-4">
             <label
               ref={descRef}
               name="desc"
-              className="block text-sm font-medium text-gray-400"
+              className="block text-sm font-medium text-neutral-500"
             >
               Description
             </label>
@@ -83,15 +83,14 @@ export default function AdminAddPostForm() {
               ref={descRef}
               name="desc"
               placeholder="One day baby..."
-              className="bg-gray-500 mt-1 block w-full border border-gray-300 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 resize-none whitespace-pre-wrap"
+              className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500 resize-none whitespace-pre-wrap"
               rows="20" // Set the number of visible text lines here
             ></textarea>
           </div>
-
           <div className="mb-4">
             <label
               name="title"
-              className="block text-sm font-medium text-gray-400"
+              className="block text-sm font-medium text-neutral-500"
             >
               Title
             </label>
@@ -99,14 +98,14 @@ export default function AdminAddPostForm() {
               type="text"
               name="title"
               placeholder="The bird"
-              className="bg-gray-500 mt-1 block w-full border border-gray-300 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
 
           <div className="mb-4">
             <label
               name="slug"
-              className="block text-sm font-medium text-gray-400"
+              className="block text-sm font-medium text-neutral-500"
             >
               Slug
             </label>
@@ -114,13 +113,13 @@ export default function AdminAddPostForm() {
               type="text"
               name="slug"
               placeholder="A single word that describes the post"
-              className="bg-gray-500 mt-1 block w-full border border-gray-300 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
           <div className="mb-4">
             <label
               name="img"
-              className="block text-sm font-medium text-gray-400"
+              className="block text-sm font-medium text-neutral-500"
             >
               Image Link
             </label>
@@ -128,20 +127,20 @@ export default function AdminAddPostForm() {
               type="text"
               name="img"
               placeholder="Link to the image"
-              className="bg-gray-500 mt-1 block w-full border border-gray-300 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
 
           <div className="mb-4">
             <label
               name="isDark"
-              className="block text-sm font-medium text-gray-400"
+              className="block text-sm font-medium text-neutral-500"
             >
               Vibe of story
             </label>
             <select
               name="isDark"
-              className="bg-gray-500 mt-1 block w-full border border-gray-300 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             >
               <option value="true">Dark</option>
               <option value="false">Bright</option>
@@ -151,7 +150,7 @@ export default function AdminAddPostForm() {
           <input readOnly hidden type="text" name="userId" value={userId} />
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-gray-900 hover:bg-gray-800 focus:ring-gray-500 focus:ring-offset-gray-200 text-gray-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+            className="w-full py-2 px-4 bg-neutral-600 hover:bg-neutral-500 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           >
             Submit
           </button>

@@ -5,7 +5,7 @@ export default async function PostUser({ userId }) {
   const user = await getUser(userId);
 
   return (
-    <div className="flex gap-x-1 justify-center items-center">
+    <div className="flex gap-x-3 justify-center items-center">
       <Image
         src={user?.img ? user.img : "/noavatar.png"}
         alt="user avatar"
@@ -14,7 +14,9 @@ export default async function PostUser({ userId }) {
         className="rounded-full"
       />
       <div>
-        <span>{user?.username ? user?.username : "Unknown"}</span>
+        <span className="text-neutral-300">
+          {user?.username ? user?.username : "Unknown"}
+        </span>
       </div>
     </div>
   );
