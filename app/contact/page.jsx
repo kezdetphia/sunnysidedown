@@ -54,7 +54,7 @@ export default function Contact() {
           <div className="w-full flex justify-center pt-5">
             <button
               type="submit"
-              className=" w-1/5 py-2 px-4 text-neutral-400 bg-neutral-800 hover:bg-neutral-700 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+              className=" w-1/5 py-2 px-4 text-neutral-400 bg-neutral-800 hover:bg-neutral-700 focus:ring-neutral-500 focus:ring-offset-neutral-200 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
             >
               Send
             </button>

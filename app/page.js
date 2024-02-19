@@ -6,7 +6,7 @@ export default async function Home() {
   return (
     <div className="relative flex flex-col justify-center  min-h-screen  bg-neutral-950 text-gray-200">
       <div className="sm:w-1/3 sm:absolute sm:top-36 sm:left-36 flex justify-center items-center   ">
-        <h1 className="sm:text-2xl   z-10 relative bg-gray-900 bg-opacity-5 tracking-wider ">
+        <h1 className="sm:text-2xl p-5   z-10 relative bg-neutral-950  tracking-wider ">
           Welcome to my kaleidoscope of words,
           <br /> where poems dance between light and shadow,
           <br />
