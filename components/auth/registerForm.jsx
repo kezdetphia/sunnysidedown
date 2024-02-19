@@ -4,17 +4,26 @@ import Link from "next/link";
 import GoogleLoginButton from "./googleLoginButton";
 import { addUserWithCredentials } from "@/lib/action";
 import { useFormState } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [state, formAction] = useFormState(addUserWithCredentials, undefined);
+  const [isLoading, setIsloading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const router = useRouter();
 
   useEffect(() => {
     if (state && !state.error) {
       router.push("/login");
+    } else if (state && state.error) {
+      setIsloading(false);
+      setShowError(true);
+      const timeOut = setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+      return () => clearTimeout(timeOut);
     }
   }, [state, router]);
 
@@ -51,15 +60,20 @@ export default function RegisterForm() {
           placeholder="*********"
         />
 
-        <button className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer">
-          Register{" "}
+        <button
+          className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer"
+          onClick={() => setIsloading(true)}
+        >
+          {isLoading ? "Registering..." : "Register"}
         </button>
       </form>
 
       <GoogleLoginButton />
 
       <div className="flex justify-center">
-        {state && state.error && <p className="text-red-600">{state.error}</p>}
+        {state && state.error && showError && (
+          <p className="text-red-600">{state.error}</p>
+        )}
       </div>
 
       <Link

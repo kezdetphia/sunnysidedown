@@ -9,9 +9,23 @@ import { useSession } from "next-auth/react";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(loginWithCredentials, undefined);
-
+  const [isLoading, setIsloading] = useState(false);
+  const [showError, setShowError] = useState(false);
   const session = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    if (state && !state.error) {
+      router.push("/login");
+    } else if (state && state.error) {
+      setIsloading(false);
+      setShowError(true);
+      const timeOut = setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+      return () => clearTimeout(timeOut);
+    }
+  }, [state, router]);
 
   useEffect(() => {
     if (session?.data?.user) {
@@ -25,7 +39,7 @@ export default function LoginForm() {
   //TODO: change login button text to Logging in or Loading while
   //make it bigger on screens,
   //make it full screen on mobile
-  
+
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
       <h3 className="text-gray-800 font-semibold ">Login 🙌</h3>
@@ -44,15 +58,20 @@ export default function LoginForm() {
           placeholder="*********"
         />
 
-        <button className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold">
-          Login
+        <button
+          className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold"
+          onClick={() => setIsloading(true)}
+        >
+          {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
 
       <GoogleLoginButton />
 
       <div className="flex justify-center">
-        {state && state.error && <p className="text-red-600">{state.error}</p>}
+        {state && state.error && showError && (
+          <p className="text-red-600">{state.error}</p>
+        )}
       </div>
 
       <Link
