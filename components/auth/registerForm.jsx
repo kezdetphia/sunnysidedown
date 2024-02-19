@@ -18,6 +18,8 @@ export default function RegisterForm() {
     }
   }, [state, router]);
 
+  //TODO: change Regsiter button text to Loading while loading
+
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
       <h3 className="text-gray-800 font-semibold">Register 🙌</h3>

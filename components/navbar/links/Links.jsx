@@ -5,6 +5,7 @@ import { handleLogout } from "@/lib/action";
 import NavLink from "./navLink/navLink";
 import styles from "./links.module.css";
 import { TfiMenu } from "react-icons/tfi";
+import { useSession } from "next-auth/react";
 
 const links = [
   {
@@ -25,8 +26,10 @@ const links = [
   },
 ];
 
-const Links = ({ session }) => {
+const Links = () => {
   const [open, setOpen] = useState(false);
+
+  const session = useSession();
 
   const pathName = usePathname();
   useEffect(() => {
@@ -48,7 +51,6 @@ const Links = ({ session }) => {
     };
   });
 
-  //TODO: if window menu open and window is resized, close menu
   const handleResize = () => {
     setOpen(false); // Close the menu when window is resized
   };
@@ -66,9 +68,9 @@ const Links = ({ session }) => {
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
-        {session?.user ? (
+        {session?.data?.user ? (
           <>
-            {session.user?.isAdmin && (
+            {session.data.user?.isAdmin && (
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
@@ -99,7 +101,7 @@ const Links = ({ session }) => {
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
-          {session?.user ? (
+          {session?.data?.user ? (
             <>
               {session.user?.isAdmin && (
                 <NavLink item={{ title: "Admin", path: "/admin" }} />

@@ -21,7 +21,7 @@ export default function AdminAddPostForm() {
     if (session?.data?.user) {
       setUserId(session?.data?.user.id);
     }
-  }, session);
+  }, [session]);
 
   useEffect(() => {
     if (!session?.data?.user.isAdmin) {
