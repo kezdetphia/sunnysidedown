@@ -1,10 +1,8 @@
 import PostUser from "@/components/postUser";
 import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/data/postData";
-
 import Image from "next/image";
 import { redirect } from "next/navigation";
-
 import React, { Suspense } from "react";
 
 export const generateMetadata = async ({ params }) => {

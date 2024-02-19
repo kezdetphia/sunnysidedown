@@ -14,7 +14,7 @@ export default async function AdminUserHandling() {
         <div className="xl:h-[890px] h-[490px] overflow-y-auto space-y-4">
           {users.map((user) => (
             <div
-              className="flex justify-between items-center border border-1 border-gray-300 rounded-md shadow-md shadow-gray-400 py-2 px-3 "
+              className="flex justify-between items-center border border-1 border-gray-300 rounded-xl shadow-md shadow-black py-2 px-3 "
               key={user.id}
             >
               <span className="text-gray-400">{user.username}</span>
