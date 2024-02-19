@@ -22,8 +22,10 @@ export default function LoginForm() {
     }
   }, [state, session, router]);
 
-
-  //TODO: change login button text to Logging in or Loading while loading
+  //TODO: change login button text to Logging in or Loading while
+  //make it bigger on screens,
+  //make it full screen on mobile
+  
   return (
     <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
       <h3 className="text-gray-800 font-semibold ">Login 🙌</h3>

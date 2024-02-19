@@ -62,6 +62,7 @@ const Links = () => {
     };
   }, []);
 
+
   return (
     <div className={`${styles.container} text-gray-200`}>
       <div className={`${styles.links}`}>
@@ -103,7 +104,7 @@ const Links = () => {
           ))}
           {session?.data?.user ? (
             <>
-              {session.user?.isAdmin && (
+              {session.data?.user?.isAdmin && (
                 <NavLink item={{ title: "Admin", path: "/admin" }} />
               )}
               <form action={handleLogout}>

@@ -22,10 +22,13 @@ export default async function SingleBlogPage({ params }) {
     redirect("/login");
   }
 
+
+  //TODO: when deployed theres no padding between the post and the footer
+
   return (
-    <div className="px-10 flex flex-col md:flex-row pt-20  space-x-5 h-screen   ">
+    <div className="px-10 flex flex-col md:flex-row pt-20  sm:space-x-5 h-screen    ">
       <div className=" md:w-1/2 flex justify-center    ">
-        <div className="rounded-xl relative md:w-4/5 w-full h-[500px]  lg:h-[800px] gap-x-3 pb-10  ">
+        <div className="rounded-xl relative md:w-4/5  w-full h-[500px]   lg:h-[800px] gap-x-3 pb-10  ">
           <Image
             alt="post image "
             src={post?.img ? post.img : "/noimage.jpg"}
