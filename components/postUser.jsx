@@ -1,7 +1,7 @@
 import { getUser } from "@/lib/data/userData";
 import Image from "next/image";
 
-export default async function PostUser({ userId }) {
+export default async function PostUser({ userId, isDark }) {
   const user = await getUser(userId);
 
   return (
@@ -14,7 +14,7 @@ export default async function PostUser({ userId }) {
         className="rounded-full"
       />
       <div>
-        <span className="text-neutral-300">
+        <span className={isDark ? "text-neutral-200" : "text-neutral-700"}>
           {user?.username ? user?.username : "Unknown"}
         </span>
       </div>

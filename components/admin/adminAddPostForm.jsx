@@ -12,6 +12,7 @@ export default function AdminAddPostForm() {
   const session = useSession();
   const [state, formAction] = useFormState(addPost, undefined);
   const [userId, setUserId] = useState(""); //set userid after checking if user is authenticated
+  const [isDarkState, setIsDarkState] = useState(true);
 
   useEffect(() => {
     if (session?.data?.user) {
@@ -110,6 +111,8 @@ export default function AdminAddPostForm() {
             <select
               name="isDark"
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
+              value={isDarkState}
+              onChange={(e) => setIsDarkState(e.target.value === "true")}
             >
               <option value="true">Dark</option>
               <option value="false">Bright</option>
