@@ -13,7 +13,6 @@ export const generateMetadata = async ({ params }) => {
     description: post?.desc,
   };
 };
-
 export default async function SingleBlogPage({ params }) {
   const { slug } = params;
   const post = await getPost(slug);
@@ -21,8 +20,6 @@ export default async function SingleBlogPage({ params }) {
   if (!session) {
     redirect("/login");
   }
-
-  //TODO: when deployed theres no padding between the post and the footer
 
   return (
     <div className="px-10  flex flex-col md:flex-row py-20  md:space-x-5 min-h-screen bg-neutral-950    ">
@@ -33,21 +30,16 @@ export default async function SingleBlogPage({ params }) {
             alt="post image "
             src={post?.img ? post.img : "/noimage.jpg"}
             object-fit="cover"
-            // overflow="hidden"
-            // width={500}
-            // height={700}
             fill={true}
           />
         </div>
       </div>
-
       <div className="w-full  px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">
         <div className="text-center md:text-left ">
           <h1 className="text-3xl font-bold mb-4 flex text-neutral-300   ">
             {post?.title}
           </h1>
         </div>
-
         <div className="flex flex-col gap-1 pb-3">
           <div className="flex gap-x-2 ">
             <p className="text-neutral-600 pr-4">Author:</p>
@@ -57,7 +49,6 @@ export default async function SingleBlogPage({ params }) {
               </Suspense>
             )}
           </div>
-
           <div className="flex gap-x-2 ">
             <p className="text-neutral-600  ">Published:</p>
             <p className="text-neutral-300">
@@ -65,9 +56,14 @@ export default async function SingleBlogPage({ params }) {
             </p>
           </div>
         </div>
-
         <p className="text-neutral-200 text-lg mb-2 text-left tracking-wide ">
-          {post?.desc}
+          {/* {post?.desc} */}
+          {post?.desc?.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {" "}
+              {line} <br />{" "}
+            </React.Fragment>
+          ))}
         </p>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           <div>
             <Navbar />
             <div className="flex flex-1 flex-col justify-between h-full  ">
-              <main>{children}</main>
+              <main className=""> {children}</main>
               <Footer />
             </div>
           </div>

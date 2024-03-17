@@ -40,8 +40,8 @@ export default function LoginForm() {
   //make it full screen on mobile
 
   return (
-    <div className="py-10 px-10 bg-gray-100 rounded-3xl border shadow-lg flex flex-col justify-center items-center space-y-5 w-[400px] ">
-      <h3 className="text-gray-800 font-semibold ">Login 🙌</h3>
+    <div className="py-12 px-10 bg-gray-100 rounded-xl border shadow-lg flex flex-col  items-center space-y-4 w-[400px]  ">
+      <h3 className="text-gray-800 font-semibold text-3xl pb-20 ">Login 🙌</h3>
       <form action={formAction} className="flex flex-col space-y-4 w-full ">
         <input
           className="px-1 py-2 rounded-lg border  border-gray-200 shadow-md placeholder-gray-300 text-sm text-gray-700  "
@@ -49,35 +49,30 @@ export default function LoginForm() {
           name="username"
           placeholder="Jon Doe"
         />
-
         <input
-          className="px-1 py-2 rounded-lg border  border-gray-200 shadow-md placeholder-gray-300 text-sm text-gray-700 "
+          className="px-1 py-2  rounded-lg border  border-gray-200 shadow-md placeholder-gray-300 text-sm text-gray-700 "
           type="password"
           name="password"
           placeholder="*********"
         />
-
         <button
-          className="bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold "
+          className=" bg-gray-900 text-gray-200 rounded-xl py-2 hover:bg-gray-800 cursos-pointer text-semibold "
           onClick={() => setIsloading(true)}
         >
           {isLoading ? "Logging in..." : "Login"}
         </button>
+        <GoogleLoginButton />
       </form>
-
-      <GoogleLoginButton />
-
       <div className="flex justify-center">
         {state && state.error && showError && (
           <p className="text-red-600">{state.error}</p>
         )}
       </div>
-
       <Link
         href="/register"
         className="text-gray-800 flex justify-center hover:text-gray-600 "
       >
-        Don&apost have an account? <b className="px-2">Register</b>
+        Don&apos;t have an account? <b className="px-2">Register</b>
       </Link>
     </div>
   );

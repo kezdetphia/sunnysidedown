@@ -6,14 +6,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 
-//TODO: need to add linebreaks when hitting enter
-// in description section to display it in the blogpage the same way
-
 export default function AdminAddPostForm() {
   const descRef = useRef();
   const router = useRouter();
   const session = useSession();
-
   const [state, formAction] = useFormState(addPost, undefined);
   const [userId, setUserId] = useState(""); //set userid after checking if user is authenticated
 
@@ -31,33 +27,6 @@ export default function AdminAddPostForm() {
       router.push("/blog");
     }
   }, [state, session, router]);
-
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.key === "Enter") {
-        const textarea = descRef.current;
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-        const value = textarea.value;
-        textarea.value =
-          value.substring(0, start) + "\n" + value.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + 1;
-        event.preventDefault();
-      }
-    };
-
-    const descRerefence = descRef.current;
-
-    if (descRerefence) {
-      descRerefence.addEventListener("keypress", handleKeyPress);
-    }
-
-    return () => {
-      if (descRerefence) {
-        descRerefence.removeEventListener("keypress", handleKeyPress);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (state && !state.error) {
