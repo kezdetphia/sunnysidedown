@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-y-5 text-gray-400 ">
+    <div className="flex flex-col items-center justify-center h-screen gap-y-5 text-gray-400 bg-neutral-900 ">
       <h1 className="text-6xl leading-relaxed tracking-wider">
         Ooppss.. That&apos;s a 404!
       </h1>

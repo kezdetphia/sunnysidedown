@@ -1,5 +1,6 @@
 import AdminAddPostForm from "@/components/admin/adminAddPostForm";
 import AdminPostHandling from "@/components/admin/adminPostHandling";
+import AdminUpdateForm from "@/components/admin/adminUpdatePostForm";
 import AdminUserHandling from "@/components/admin/adminUserHandling";
 export default async function AdminPage() {
   return (
@@ -12,6 +13,7 @@ export default async function AdminPage() {
 
         <AdminPostHandling />
       </div>
+      <div>{/* <AdminUpdateForm /> */}</div>
     </div>
   );
 }

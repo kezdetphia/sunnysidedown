@@ -1,9 +1,11 @@
+import LikeButton from "@/components/admin/likeButton";
 import PostUser from "@/components/postUser";
 import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/data/postData";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React, { Suspense } from "react";
+
 
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
@@ -48,7 +50,7 @@ export default async function SingleBlogPage({ params }) {
         </div>
       </div>
       <div className="w-full  px-auto  md:w-1/2 flex flex-col pt-5 md:pt-0 ">
-        <div className="text-center md:text-left ">
+        <div className="text-center md:text-left flex items-center justify-between  ">
           <h1
             className={`text-3xl font-bold mb-4 flex  ${
               post?.isDark ? "text-neutral-100 " : "text-neutral-900"
@@ -56,6 +58,10 @@ export default async function SingleBlogPage({ params }) {
           >
             {post?.title}
           </h1>
+          <div>
+            <LikeButton post={post} />
+            {/* <button className="sm:mr-20 border-blue-800   bg-blue-600 px-3 py-1 rounded-xl text-neutral-100 font-bold "></button> */}
+          </div>
         </div>
         <div className="flex flex-col gap-1 pb-3">
           <div className="flex gap-x-2 ">

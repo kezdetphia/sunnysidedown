@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaHeart } from "react-icons/fa";
 
 export default async function Postcard({ post }) {
+  console.log(post, "post");
   return (
     <div>
       <div className="  transition duration-500 hover:scale-105 ">
@@ -30,7 +32,15 @@ export default async function Postcard({ post }) {
             <p className="text-neutral-600 text-md ">
               {post.createdAt?.toString().slice(4, 16)}
             </p>
-            <button className=" text-neutral-500">Read More</button>
+            <div className="flex justify-center relative">
+              <p className="text-neutral-500">Read More</p>
+              <div className="flex items-center">
+                <p className="text-white absolute right-3">{post.likes}</p>
+                <button className="absolute right-7">
+                  <FaHeart size={18} color="red" />
+                </button>
+              </div>
+            </div>
           </div>
         </Link>
       </div>

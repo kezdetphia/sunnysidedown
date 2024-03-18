@@ -27,8 +27,7 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     likes: {
-      type: Array,
-      default: [],
+      type: Number,
     },
     isDark: {
       type: Boolean,

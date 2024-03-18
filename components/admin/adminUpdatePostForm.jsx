@@ -1,16 +1,16 @@
 "use client";
-import { addPost } from "@/lib/data/postData";
+import { updatePost } from "@/lib/data/postData"; // Assuming there's an updatePost function
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 
-export default function AdminAddPostForm() {
+export default function AdminUpdateForm() {
   const descRef = useRef();
   const router = useRouter();
   const session = useSession();
-  const [state, formAction] = useFormState(addPost, undefined);
+  const [state, formAction] = useFormState(updatePost, undefined); // Change addPost to updatePost
   const [userId, setUserId] = useState(""); //set userid after checking if user is authenticated
   const [isDarkState, setIsDarkState] = useState(true);
 
@@ -39,8 +39,10 @@ export default function AdminAddPostForm() {
     <div className="md:pt-20 py-10 flex items-center ">
       <div className=" bg-neutral-900 w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 ">
         <form action={formAction}>
-          <h1 className="text-3xl font-bold mb-4 text-neutral-300">Add Post</h1>
-
+          <h1 className="text-3xl font-bold mb-4 text-neutral-300">
+            Update Post
+          </h1>{" "}
+          {/* Change the form title */}
           <div className="mb-4">
             <label
               ref={descRef}
@@ -71,7 +73,6 @@ export default function AdminAddPostForm() {
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
-
           <div className="mb-4">
             <label
               name="slug"
@@ -100,7 +101,6 @@ export default function AdminAddPostForm() {
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
-
           <div className="mb-4">
             <label
               name="isDark"
@@ -118,14 +118,12 @@ export default function AdminAddPostForm() {
               <option value="false">Bright</option>
             </select>
           </div>
-
           <input readOnly hidden type="text" name="userId" value={userId} />
-          <input readOnly hidden type="text" name="likes" value={0} />
           <button
             type="submit"
             className="w-full py-2 px-4 bg-neutral-600 hover:bg-neutral-500 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           >
-            Submit
+            Update {/* Change the button label */}
           </button>
           <div className="flex  justify-center">
             {state && state.error === "wrong link" && (
