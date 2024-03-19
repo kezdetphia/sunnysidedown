@@ -1,5 +1,6 @@
-import { deletePost, getPosts } from "@/lib/data/postData";
+import { deletePost, getPosts, updatePost } from "@/lib/data/postData";
 import Link from "next/link";
+import { MdOutlineModeEdit } from "react-icons/md";
 import DeleteButton from "../deleteButton";
 
 export default async function AdminPostHandling() {
@@ -7,7 +8,7 @@ export default async function AdminPostHandling() {
 
   return (
     <div className="md:pt-20 pb-10 flex  items-center xl:w-1/2    ">
-      <div className=" bg-neutral-900 w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-lg shadow-lg shadow-neutral-800 text-black">
+      <div className=" bg-neutral-900 sm:w-4/5 w-screen mt-8 sm:mt-0 max-w-4xl mx-auto p-8 border-1 rounded-lg shadow-lg shadow-neutral-800 text-black">
         <h1 className="text-3xl  font-bold mb-8 text-neutral-300 text-start">
           Posts
         </h1>
@@ -20,10 +21,20 @@ export default async function AdminPostHandling() {
               <Link href={`/blog/${post.slug}`}>
                 <span className="text-neutral-400">{post.title}</span>
               </Link>
-              <form action={deletePost}>
-                <input readOnly type="hidden" name="id" value={post.id} />
-                <DeleteButton props={post.title} />
-              </form>
+              <div className="flex space-x-1">
+                <form action={updatePost}>
+                  <input readOnly type="hidden" name="slug" value={post.slug} />
+                  <Link href={`/admin/updatepost/${post.slug}`}>
+                    {/* <Link href={`/admin/updatepost`}> */}
+                    <MdOutlineModeEdit className="h-5 w-5 text-neutral-400" />
+                  </Link>
+                </form>
+
+                <form action={deletePost}>
+                  <input readOnly type="hidden" name="id" value={post.id} />
+                  <DeleteButton props={post.title} />
+                </form>
+              </div>
             </div>
           ))}
         </div>

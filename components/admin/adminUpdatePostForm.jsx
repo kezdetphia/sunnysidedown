@@ -1,58 +1,52 @@
 "use client";
-import { updatePost } from "@/lib/data/postData"; // Assuming there's an updatePost function
-import { useSession } from "next-auth/react";
+import { updatePost } from "@/lib/data/postData";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useFormState } from "react-dom";
 
-export default function AdminUpdateForm() {
-  const descRef = useRef();
+const AdminUpdatePostForm = ({ post }) => {
   const router = useRouter();
-  const session = useSession();
-  const [state, formAction] = useFormState(updatePost, undefined); // Change addPost to updatePost
-  const [userId, setUserId] = useState(""); //set userid after checking if user is authenticated
+  const [state, formAction] = useFormState(updatePost, undefined);
   const [isDarkState, setIsDarkState] = useState(true);
 
-  useEffect(() => {
-    if (session?.data?.user) {
-      setUserId(session?.data?.user.id);
-    }
-  }, [session]);
+  const [initialForm, setInitialForm] = useState({
+    title: post?.title,
+    desc: post?.desc,
+    img: post?.img,
+    slug: post?.slug,
+    id: post?._id,
+    isDark: post?.isDark,
+  });
 
-  useEffect(() => {
-    if (!session?.data?.user.isAdmin) {
-      router.push("/");
-    }
-    if (state && !state.error) {
-      router.push("/blog");
-    }
-  }, [state, session, router]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInitialForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
 
-  useEffect(() => {
-    if (state && !state.error) {
-      router.push("/blog");
-    }
-  }, [state, router]);
+  const submitHandler = async (e) => {
+    await formAction(initialForm);
+    router.push("/admin");
+  };
 
   return (
-    <div className="md:pt-20 py-10 flex items-center ">
-      <div className=" bg-neutral-900 w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 ">
+    <div className="md:pt-20 py-10 flex items-center bg-black  ">
+      <div className=" bg-neutral-900 sm:w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 w-screen ">
         <form action={formAction}>
           <h1 className="text-3xl font-bold mb-4 text-neutral-300">
-            Update Post
-          </h1>{" "}
-          {/* Change the form title */}
+            Edit Post
+          </h1>
+
           <div className="mb-4">
             <label
-              ref={descRef}
               name="desc"
               className="block text-sm font-medium text-neutral-500"
             >
               Description
             </label>
             <textarea
-              ref={descRef}
+              onChange={handleChange}
+              value={initialForm.desc}
               name="desc"
               placeholder="One day baby..."
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500 resize-none whitespace-pre-wrap"
@@ -67,12 +61,15 @@ export default function AdminUpdateForm() {
               Title
             </label>
             <input
+              onChange={handleChange}
+              value={initialForm.title}
               type="text"
               name="title"
               placeholder="The bird"
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
+
           <div className="mb-4">
             <label
               name="slug"
@@ -81,6 +78,8 @@ export default function AdminUpdateForm() {
               Slug
             </label>
             <input
+              onChange={handleChange}
+              value={initialForm.slug}
               type="text"
               name="slug"
               placeholder="A single word that describes the post"
@@ -95,12 +94,15 @@ export default function AdminUpdateForm() {
               Image Link
             </label>
             <input
+              onChange={handleChange}
+              value={initialForm.img}
               type="text"
               name="img"
               placeholder="Link to the image"
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
+
           <div className="mb-4">
             <label
               name="isDark"
@@ -109,6 +111,7 @@ export default function AdminUpdateForm() {
               Vibe of story
             </label>
             <select
+              disabled
               name="isDark"
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
               value={isDarkState}
@@ -118,12 +121,22 @@ export default function AdminUpdateForm() {
               <option value="false">Bright</option>
             </select>
           </div>
-          <input readOnly hidden type="text" name="userId" value={userId} />
+
+          <input
+            onChange={handleChange}
+            readOnly
+            hidden
+            type="text"
+            name="id"
+            value={initialForm.id}
+          />
+          <input readOnly hidden type="text" name="likes" value={0} />
           <button
+            onClick={submitHandler}
             type="submit"
             className="w-full py-2 px-4 bg-neutral-600 hover:bg-neutral-500 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           >
-            Update {/* Change the button label */}
+            Submit
           </button>
           <div className="flex  justify-center">
             {state && state.error === "wrong link" && (
@@ -144,4 +157,6 @@ export default function AdminUpdateForm() {
       </div>
     </div>
   );
-}
+};
+
+export default AdminUpdatePostForm;

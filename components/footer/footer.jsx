@@ -22,7 +22,7 @@ export const Footer = () => {
               target="_blank"
             >
               <PiTiktokLogo size={35} color="gray" />
-            </Link>
+          </Link>
           </div>
           {/* <p className="text-neutral-400">Logo</p> */}
         </div>

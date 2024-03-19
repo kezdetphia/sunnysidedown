@@ -36,8 +36,8 @@ export default function AdminAddPostForm() {
   }, [state, router]);
 
   return (
-    <div className="md:pt-20 py-10 flex items-center ">
-      <div className=" bg-neutral-900 w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 ">
+    <div className="md:pt-20 py-10 flex items-center  ">
+      <div className=" bg-neutral-900 sm:w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 w-screen ">
         <form action={formAction}>
           <h1 className="text-3xl font-bold mb-4 text-neutral-300">Add Post</h1>
 
