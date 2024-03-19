@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FaHeart } from "react-icons/fa";
 
 export default async function Postcard({ post }) {
-  console.log(post, "post");
   return (
     <div>
       <div className="  transition duration-500 hover:scale-105 ">

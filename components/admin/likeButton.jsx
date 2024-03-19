@@ -11,8 +11,8 @@ const LikeButton = ({ post }) => {
   return (
     <div>
       <form action={formAction}>
-        <input type="number" name="likes" value={post.likes} readOnly hidden />
-        <input name="id" value={post._id} readOnly hidden />
+        <input type="number" name="likes" value={post?.likes} readOnly hidden />
+        <input name="id" value={post?._id} readOnly hidden />
         <button onClick={() => setLiked(!liked)}>
           <Image
             src="/like.png"
