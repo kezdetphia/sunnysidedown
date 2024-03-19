@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
 import { updateLikes, updatePost } from "@/lib/data/postData";
-import { useState } from "react";
+import { useFormState } from "react-dom";
 
 const LikeButton = ({ post }) => {
-  console.log("this is postid,", post.id);
+  const [state, formAction] = useFormState(updateLikes, undefined);
 
   return (
     <div>
-      <form action={updateLikes}>
+      <form action={formAction}>
         <input type="text" name="likes" readOnly hidden />
         <input name="id" value={post.id} readOnly hidden />
         <button>

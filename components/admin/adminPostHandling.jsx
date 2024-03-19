@@ -21,7 +21,7 @@ export default async function AdminPostHandling() {
               <Link href={`/blog/${post.slug}`}>
                 <span className="text-neutral-400">{post.title}</span>
               </Link>
-              <div className="flex space-x-1">
+              <div className="flex sm:space-x-1 space-x-8 ">
                 <form action={updatePost}>
                   <input readOnly type="hidden" name="slug" value={post.slug} />
                   <Link href={`/admin/updatepost/${post.slug}`}>

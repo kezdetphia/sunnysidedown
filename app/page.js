@@ -19,12 +19,14 @@ export default async function Home() {
         src={des}
         width={400}
         height={400}
+        alt="post image"
       />
       <Image
         className="rounded-tr-full absolute bottom-0 left-0 w-[300px] md:w-[400px] lg:w-[500px]  "
         src={desi}
         width={400}
         height={400}
+        alt="post image"
       />
     </div>
   );
