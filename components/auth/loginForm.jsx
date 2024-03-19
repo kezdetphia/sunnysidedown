@@ -36,21 +36,18 @@ export default function LoginForm() {
     }
   }, [state, session, router]);
 
-  //make it bigger on screens,
-  //make it full screen on mobile
-
   return (
     <div className="py-12 px-10 bg-gray-100 rounded-xl border shadow-lg flex flex-col  items-center space-y-4 w-[400px]  ">
       <h3 className="text-gray-800 font-semibold text-3xl pb-20 ">Login 🙌</h3>
       <form action={formAction} className="flex flex-col space-y-4 w-full ">
         <input
-          className="px-1 py-2 rounded-lg border  border-gray-200 shadow-md placeholder-gray-300 text-sm text-gray-700  "
+          className="px-1 py-2 rounded-lg border  border-gray-200 shadow-md placeholder-gray-500 text-sm text-gray-700  "
           type="text"
           name="username"
           placeholder="Jon Doe"
         />
         <input
-          className="px-1 py-2  rounded-lg border  border-gray-200 shadow-md placeholder-gray-300 text-sm text-gray-700 "
+          className="px-1 py-2  rounded-lg border  border-gray-200 shadow-md placeholder-gray-400 text-sm text-gray-700 "
           type="password"
           name="password"
           placeholder="*********"
@@ -61,8 +58,8 @@ export default function LoginForm() {
         >
           {isLoading ? "Logging in..." : "Login"}
         </button>
-        <GoogleLoginButton />
       </form>
+      <GoogleLoginButton />
       <div className="flex justify-center">
         {state && state.error && showError && (
           <p className="text-red-600">{state.error}</p>

@@ -6,7 +6,6 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import React, { Suspense } from "react";
 
-
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
   const post = await getPost(slug);
@@ -59,7 +58,7 @@ export default async function SingleBlogPage({ params }) {
             {post?.title}
           </h1>
           <div>
-            <LikeButton post={post} />
+            <LikeButton post={post}  />
             {/* <button className="sm:mr-20 border-blue-800   bg-blue-600 px-3 py-1 rounded-xl text-neutral-100 font-bold "></button> */}
           </div>
         </div>

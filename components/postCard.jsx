@@ -35,8 +35,8 @@ export default async function Postcard({ post }) {
             <div className="flex justify-center relative">
               <p className="text-neutral-500">Read More</p>
               <div className="flex items-center">
-                <p className="text-white absolute right-3">{post.likes}</p>
-                <button className="absolute right-7">
+                <p className="text-white absolute right-7">{post.likes}</p>
+                <button className="absolute right-0">
                   <FaHeart size={18} color="red" />
                 </button>
               </div>
