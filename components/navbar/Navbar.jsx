@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Links from "./links/Links";
-import { AiFillAlipayCircle } from "react-icons/ai";
+// import { AiFillAlipayCircle } from "react-icons/ai";
 import Image from "next/image";
 
 const Navbar = async () => {

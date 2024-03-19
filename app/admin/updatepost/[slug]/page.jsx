@@ -4,10 +4,8 @@ import React from "react";
 
 const UpdatePost = async ({ params }) => {
   const { slug } = params;
-
   const post = await getPost(slug);
-
-
+  
   return (
     <div>
       <AdminUpdatePostForm post={post} />
