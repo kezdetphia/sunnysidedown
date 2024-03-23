@@ -9,6 +9,7 @@ const AdminUpdatePostForm = ({ post }) => {
   const router = useRouter();
   const [state, formAction] = useFormState(updatePost, undefined);
   const [isDarkState, setIsDarkState] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [initialForm, setInitialForm] = useState({
     title: post?.title,
@@ -25,6 +26,7 @@ const AdminUpdatePostForm = ({ post }) => {
   };
 
   const submitHandler = async (e) => {
+    setIsLoading(true);
     await formAction(initialForm);
     router.push("/admin");
   };
@@ -172,7 +174,7 @@ const AdminUpdatePostForm = ({ post }) => {
             type="submit"
             className="w-full py-2 px-4 bg-neutral-600 hover:bg-neutral-500 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           >
-            Submit
+            {isLoading ? "Loading..." : "Submit"}
           </button>
           <div className="flex  justify-center">
             {state && state.error === "wrong link" && (

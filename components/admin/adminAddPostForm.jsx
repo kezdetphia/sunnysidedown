@@ -13,6 +13,7 @@ export default function AdminAddPostForm() {
   const [state, formAction] = useFormState(addPost, undefined);
   const [userId, setUserId] = useState(""); //set userid after checking if user is authenticated
   const [isDarkState, setIsDarkState] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (session?.data?.user) {
@@ -154,10 +155,11 @@ export default function AdminAddPostForm() {
           </div>
 
           <button
+            onClick={() => setIsLoading(true)}
             type="submit"
             className="w-full py-2 px-4 bg-neutral-600 hover:bg-neutral-500 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           >
-            Submit
+            {isLoading ? "Loading..." : "Submit"}
           </button>
           <div className="flex  justify-center">
             {state && state.error === "wrong link" && (
