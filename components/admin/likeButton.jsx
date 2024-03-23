@@ -4,15 +4,15 @@ import { updateLikes, updatePost } from "@/lib/data/postData";
 import { useFormState } from "react-dom";
 import { useState } from "react";
 
-const LikeButton = ({ post }) => {
+const LikeButton = ({ likes, _id }) => {
   const [state, formAction] = useFormState(updateLikes, undefined);
   const [liked, setLiked] = useState(false);
 
   return (
     <div>
       <form action={formAction}>
-        <input type="number" name="likes" value={post?.likes} readOnly hidden />
-        <input name="id" value={post?._id} readOnly hidden />
+        <input type="number" name="likes" value={likes} readOnly hidden />
+        <input name="id" value={_id} readOnly hidden />
         <button onClick={() => setLiked(!liked)}>
           <Image
             src="/like.png"

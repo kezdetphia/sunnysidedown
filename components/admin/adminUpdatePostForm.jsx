@@ -29,6 +29,17 @@ const AdminUpdatePostForm = ({ post }) => {
     router.push("/admin");
   };
 
+  const [base64Image, setBase64Image] = useState();
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setBase64Image(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <div className="md:pt-20 py-10 flex items-center bg-black  ">
       <div className=" bg-neutral-900 sm:w-4/5 max-w-4xl mx-auto p-8 border-1 rounded-xl shadow-lg shadow-neutral-800 w-screen ">
@@ -86,7 +97,7 @@ const AdminUpdatePostForm = ({ post }) => {
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label
               name="img"
               className="block text-sm font-medium text-neutral-500"
@@ -101,7 +112,7 @@ const AdminUpdatePostForm = ({ post }) => {
               placeholder="Link to the image"
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
-          </div>
+          </div> */}
 
           <div className="mb-4">
             <label
@@ -131,6 +142,31 @@ const AdminUpdatePostForm = ({ post }) => {
             value={initialForm.id}
           />
           <input readOnly hidden type="text" name="likes" value={0} />
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-neutral-500 ">
+              Image
+              <input
+                className="w-full py-2 px-4 bg-neutral-800  focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-500 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                type="file"
+                accept="image/*"
+                onChange={handleFileInputChange}
+              />
+              {base64Image && (
+                <div>
+                  <img src={base64Image} alt="Uploaded" />
+                  {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
+                </div>
+              )}
+              <input
+                name="img"
+                hidden
+                value={base64Image ? base64Image : initialForm.img}
+                readOnly
+              />
+            </label>
+          </div>
+
           <button
             onClick={submitHandler}
             type="submit"

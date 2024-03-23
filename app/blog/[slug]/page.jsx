@@ -17,6 +17,7 @@ export const generateMetadata = async ({ params }) => {
 export default async function SingleBlogPage({ params }) {
   const { slug } = params;
   const post = await getPost(slug);
+  const { title, desc, userId, img, isDark, likes, createdAt, id } = post;
   const session = await auth();
   if (!session) {
     redirect("/login");
@@ -25,11 +26,11 @@ export default async function SingleBlogPage({ params }) {
   return (
     <div
       className={`px-10  flex flex-col md:flex-row py-20  md:space-x-5 min-h-screen ${
-        post?.isDark ? "bg-neutral-950 " : "bg-neutral-100 "
+        isDark ? "bg-neutral-950 " : "bg-neutral-100 "
       } `}
       style={{
         backgroundImage: `url(${
-          post?.isDark ? "/darkcloud.jpeg" : "/brightcloud2.jpeg"
+          isDark ? "/darkcloud.jpeg" : "/brightcloud2.jpeg"
         })`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -42,7 +43,8 @@ export default async function SingleBlogPage({ params }) {
           <Image
             className="rounded-2xl"
             alt="post image "
-            src={post?.img ? post.img : "/noimage.jpg"}
+            // src={.img ? post.img : "/noimage.jpg"}
+            src={img ? img : "/noimage.jpg"}
             object-fit="cover"
             fill={true}
           />
@@ -52,13 +54,13 @@ export default async function SingleBlogPage({ params }) {
         <div className="text-center md:text-left flex items-center justify-between  ">
           <h1
             className={`text-3xl font-bold mb-4 flex  ${
-              post?.isDark ? "text-neutral-100 " : "text-neutral-900"
+              isDark ? "text-neutral-100 " : "text-neutral-900"
             } `}
           >
-            {post?.title}
+            {title}
           </h1>
           <div>
-            <LikeButton post={post}  />
+            <LikeButton likes={likes} id={id} />
             {/* <button className="sm:mr-20 border-blue-800   bg-blue-600 px-3 py-1 rounded-xl text-neutral-100 font-bold "></button> */}
           </div>
         </div>
@@ -66,39 +68,37 @@ export default async function SingleBlogPage({ params }) {
           <div className="flex gap-x-2 ">
             <p
               className={` ${
-                post?.isDark ? "text-neutral-100" : "text-neutral-800"
+                isDark ? "text-neutral-100" : "text-neutral-800"
               }  pr-4`}
             >
               Author:
             </p>
             {post && (
               <Suspense fallback={<div>Loading...</div>}>
-                <PostUser isDark={post?.isDark} userId={post.userId} />
+                <PostUser isDark={isDark} userId={userId} />
               </Suspense>
             )}
           </div>
           <div className="flex gap-x-2 ">
             <p
               className={` ${
-                post?.isDark ? "text-neutral-100" : "text-neutral-800"
+                isDark ? "text-neutral-100" : "text-neutral-800"
               }  `}
             >
               Published:
             </p>
-            <p
-              className={post?.isDark ? "text-neutral-200" : "text-neutral-700"}
-            >
-              {post?.createdAt.toString().slice(4, 16)}
+            <p className={isDark ? "text-neutral-200" : "text-neutral-700"}>
+              {createdAt.toString().slice(4, 16)}
             </p>
           </div>
         </div>
         <p
           className={` text-lg mb-2 text-left tracking-wide ${
-            post?.isDark ? "text-neutral-100" : "text-neutral-800"
+            isDark ? "text-neutral-100" : "text-neutral-800"
           }  `}
         >
-          {/* {post?.desc} */}
-          {post?.desc?.split("\n").map((line, index) => (
+          {/* {.desc} */}
+          {desc?.split("\n").map((line, index) => (
             <React.Fragment key={index}>
               {" "}
               {line} <br />{" "}
