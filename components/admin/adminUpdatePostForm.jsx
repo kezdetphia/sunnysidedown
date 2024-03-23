@@ -10,6 +10,7 @@ const AdminUpdatePostForm = ({ post }) => {
   const [state, formAction] = useFormState(updatePost, undefined);
   const [isDarkState, setIsDarkState] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isImageUpdate, setIsImageUpdate] = useState(false);
 
   const [initialForm, setInitialForm] = useState({
     title: post?.title,
@@ -33,6 +34,7 @@ const AdminUpdatePostForm = ({ post }) => {
 
   const [base64Image, setBase64Image] = useState();
   const handleFileInputChange = (event) => {
+    setIsImageUpdate(true);
     const file = event.target.files[0];
 
     const reader = new FileReader();
@@ -154,12 +156,6 @@ const AdminUpdatePostForm = ({ post }) => {
                 accept="image/*"
                 onChange={handleFileInputChange}
               />
-              {base64Image && (
-                <div>
-                  <img src={base64Image} alt="Uploaded" />
-                  {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
-                </div>
-              )}
               <input
                 name="img"
                 hidden
@@ -169,6 +165,18 @@ const AdminUpdatePostForm = ({ post }) => {
             </label>
           </div>
 
+          {isImageUpdate ? (
+            <div>
+              <img src={base64Image} alt="Uploaded" />
+              {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
+            </div>
+          ) : (
+            <div>
+              <img src={initialForm.img} alt="Uploaded" />
+              {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
+            </div>
+          )}
+
           <button
             onClick={submitHandler}
             type="submit"
@@ -176,20 +184,11 @@ const AdminUpdatePostForm = ({ post }) => {
           >
             {isLoading ? "Loading..." : "Submit"}
           </button>
-          <div className="flex  justify-center">
-            {state && state.error === "wrong link" && (
-              <p className="text-red-600">
-                Wrong link, use{" "}
-                <Link
-                  href="https://www.pexels.com/"
-                  className="underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  pexels.com,Then right click on image then copy image address.
-                </Link>
-              </p>
-            )}
+          <div className="flex justify-center">
+            {state &&
+              state.error === "Please provide valid input for all fields." && (
+                <p className="text-red-600">{state.error}</p>
+              )}
           </div>
         </form>
       </div>

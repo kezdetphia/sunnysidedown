@@ -159,22 +159,17 @@ export default function AdminAddPostForm() {
             type="submit"
             className="w-full py-2 px-4 bg-neutral-600 hover:bg-neutral-500 focus:ring-neutral-500 focus:ring-offset-neutral-200 text-neutral-300 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           >
-            {isLoading ? "Loading..." : "Submit"}
+            {isLoading && !state?.error ? "Loading..." : "Submit"}
           </button>
-          <div className="flex  justify-center">
-            {state && state.error === "wrong link" && (
-              <p className="text-red-600">
-                Wrong link, use{" "}
-                <Link
-                  href="https://www.pexels.com/"
-                  className="underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  pexels.com,Then right click on image then copy image address.
-                </Link>
-              </p>
-            )}
+
+          <div className="flex justify-center">
+            {state &&
+              state.error === "Please provide valid input for all fields." && (
+                <p className="text-red-600">
+                  {state.error}
+             
+                </p>
+              )}
           </div>
         </form>
       </div>

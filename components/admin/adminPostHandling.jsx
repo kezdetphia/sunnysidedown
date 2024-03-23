@@ -7,7 +7,7 @@ export default async function AdminPostHandling() {
   const posts = await getPosts();
 
   return (
-    <div className="md:pt-20 pb-10 flex  items-center xl:w-1/2    ">
+    <div className="md:pt-20 pb-10 xl:w-1/2    ">
       <div className=" bg-neutral-900 sm:w-4/5 w-screen mt-8 sm:mt-0 max-w-4xl mx-auto p-8 border-1 rounded-lg shadow-lg shadow-neutral-800 text-black">
         <h1 className="text-3xl  font-bold mb-8 text-neutral-300 text-start">
           Posts
