@@ -145,7 +145,7 @@ export default function AdminAddPostForm() {
                 onChange={handleFileInputChange}
               />
               {base64Image && (
-                <div>
+                <div className="mb-4">
                   <img src={base64Image} alt="Uploaded" />
                   {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
                 </div>
@@ -165,10 +165,7 @@ export default function AdminAddPostForm() {
           <div className="flex justify-center">
             {state &&
               state.error === "Please provide valid input for all fields." && (
-                <p className="text-red-600">
-                  {state.error}
-             
-                </p>
+                <p className="text-red-600">{state.error}</p>
               )}
           </div>
         </form>

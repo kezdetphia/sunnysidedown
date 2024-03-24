@@ -101,22 +101,6 @@ const AdminUpdatePostForm = ({ post }) => {
               className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
             />
           </div>
-          {/* <div className="mb-4">
-            <label
-              name="img"
-              className="block text-sm font-medium text-neutral-500"
-            >
-              Image Link
-            </label>
-            <input
-              onChange={handleChange}
-              value={initialForm.img}
-              type="text"
-              name="img"
-              placeholder="Link to the image"
-              className="bg-neutral-800 text-neutral-200 mt-1 block w-full border border-neutral-400 rounded-xl shadow-md shadow-black  py-2 px-3 focus:outline-none focus:ring-neutral-500 focus:border-neutral-500"
-            />
-          </div> */}
 
           <div className="mb-4">
             <label
@@ -166,12 +150,12 @@ const AdminUpdatePostForm = ({ post }) => {
           </div>
 
           {isImageUpdate ? (
-            <div>
+            <div className="mb-4">
               <img src={base64Image} alt="Uploaded" />
               {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
             </div>
           ) : (
-            <div>
+            <div className="mb-4">
               <img src={initialForm.img} alt="Uploaded" />
               {/* <textarea rows={10} cols={50} value={base64Image} readOnly /> */}
             </div>

@@ -14,8 +14,8 @@ export default async function Postcard({ post }) {
                 src={post?.img ? post.img : "/noimage.jpg"}
                 alt="post-image"
                 object-fit="cover"
-                // width={500}
-                // height={700}
+                // width={900}
+                // height={1000}
                 fill={true}
               />
             </div>

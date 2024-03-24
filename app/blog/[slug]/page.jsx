@@ -39,7 +39,7 @@ export default async function SingleBlogPage({ params }) {
       }}
     >
       <div className=" md:w-1/2 flex justify-center ">
-        <div className="relative  w-full  h-[500px]  md:h-[500px] md:w-[400px] lg:w-[700px] lg:h-[700px] xl:w-[700px] xl:h-[800px] gap-x-3   ">
+        <div className="relative  w-full   h-[500px]  md:h-[500px] md:w-[400px] lg:w-[700px] lg:h-[700px] xl:w-[700px] xl:h-[800px] gap-x-3   ">
           <Image
             className="rounded-2xl"
             alt="post image "
