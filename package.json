@@ -14,7 +14,7 @@
     "lottie-react": "^2.4.0",
     "mongoose": "^8.1.3",
     "next": "14.1.0",
-    "next-auth": "^5.0.0-beta.9",
+    "next-auth": "^5.0.0-beta.25",
     "react": "^18",
     "react-dom": "^18",
     "react-google-button": "^0.7.2",
