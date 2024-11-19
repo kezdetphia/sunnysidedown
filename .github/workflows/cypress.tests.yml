@@ -1,0 +1,32 @@
+name: Cypress Tests
+
+on:
+  pull_request:
+    branches:
+      - main # Run on PRs targeting the main branch
+    types:
+      - opened # Trigger on newly opened PRs
+      - synchronize # Trigger when commits are pushed to an existing PR
+      - reopened # Trigger when a PR is reopened
+  push:
+    branches:
+      - main # Optional: Run on direct pushes to main, if needed
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # Use the Node.js version your project requires
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npx cypress run
