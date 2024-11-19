@@ -5,13 +5,12 @@ on:
     branches:
       - main # Run on PRs targeting the main branch
     types:
-      - opened
-      - synchronize
-      - reopened
-
+      - opened # Trigger on newly opened PRs
+      - synchronize # Trigger when commits are pushed to an existing PR
+      - reopened # Trigger when a PR is reopened
   push:
     branches:
-      - main # Run on pushes to the main branch
+      - main # Optional: Run on direct pushes to main, if needed
 
 jobs:
   cypress-run:
@@ -24,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20" # Explicitly set to Node.js 20
+          node-version: "16" # Use the Node.js version your project requires
 
       - name: Install dependencies
         run: npm install
