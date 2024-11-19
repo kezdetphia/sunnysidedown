@@ -7,6 +7,6 @@ module.exports = defineConfig({
     },
     baseUrl: "http://localhost:3000", // Update this with your app's base URL
     specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
-    supportFile: false, // Disable support file
+    supportFile: "cypress/support/e2e.js",
   },
 });
